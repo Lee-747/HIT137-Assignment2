@@ -4,8 +4,8 @@
 # Lee Potter - S368675
 # Sahil Badgal - S384037
 
-INPUT_FILE_PATH = "raw_text.txt"
-OUTPUT_FILE_PATH = "encrypted_text.txt"
+RAW_FILE_PATH = "raw_text.txt"
+ENCRYPTED_FILE_PATH = "encrypted_text.txt"
 
 # Takes a single char and two integer values and outputs the encrypted char
 def encrypt_char(char, n, m):
@@ -50,20 +50,22 @@ def decrypt_char(char, n, m):
     
     return char
 
+# takes n and m values as integers and encrypts the raw
+# data from file. Saves encrypted text to file
 def encrypt(n, m):
-    with open(INPUT_FILE_PATH, 'r') as input_file:
+    encrypted_text = ''
+    with open(RAW_FILE_PATH, 'r') as input_file:
         input_text = input_file.read()
-        encrypted_text = ''
         for char in input_text:
             encrypted_text += encrypt_char(char, n, m)
     
-    with open(OUTPUT_FILE_PATH, 'w') as output_file:
+    with open(ENCRYPTED_FILE_PATH, 'w') as output_file:
         output_file.write(encrypted_text)
 
-        return encrypted_text
-
+# takes n and m values as integers and decrypts the already
+# encrypted text from file. Returns decrypted text as string
 def decrypt(n, m):
-    with open(OUTPUT_FILE_PATH, 'r') as file:
+    with open(ENCRYPTED_FILE_PATH, 'r') as file:
         encrypted_text = file.read()
         decrypted_text = ''
         for char in encrypted_text:
@@ -71,9 +73,24 @@ def decrypt(n, m):
 
         return decrypted_text
 
+# takes input of a decrypted text string and compares
+# it to raw input string, returns True if the strings
+# are an exact match, else returns False
+def decrypted_text_valid(decrypted_text):
+    raw_text = ''
+    with open(RAW_FILE_PATH, 'r') as file:
+        raw_text = file.read()
+
+    # print(raw_text)
+    # print()
+    # print(decrypted_text)
+
+    return raw_text == decrypted_text
+
 # main entry point
 n = int(input("Enter n value: "))
 m = int(input("Enter m value: "))
 
-print("Encrypted:\n",encrypt(n, m), '\n', sep='')
-print("Decrypted:\n",decrypt(n, m), sep='')
+encrypt(n, m)
+decrypted_text = decrypt(n, m)
+print('The decrypted text is the same as the original.' if decrypted_text_valid(decrypted_text) else 'The decrypted text is NOT the same as the original')
