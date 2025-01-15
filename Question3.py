@@ -4,6 +4,8 @@
 # Lee Potter - S368675
 # Sahil Badgal - S384037
 
+# Question 3 completed by Lee Potter
+
 from turtle import *
 
 # moves turtle position lower down window to give more room for drawing tree

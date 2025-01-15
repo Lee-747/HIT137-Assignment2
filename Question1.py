@@ -4,6 +4,17 @@
 # Lee Potter - S368675
 # Sahil Badgal - S384037
 
+# Question 1 completed by Lee Potter
+
+# This encryption algorithm will not work with some values of n and m
+# due to the formulas used for different letters
+# The decrypted character could be different values depending on
+# which method is tried first
+# eg. using n = 2 and m = 3
+# q is encrypted to l
+# l can decrypt to either f or q with no way to determine which is correct 
+# the higher the n and m values, the less chance of this occurring
+
 RAW_FILE_PATH = "raw_text.txt"
 ENCRYPTED_FILE_PATH = "encrypted_text.txt"
 
@@ -54,18 +65,18 @@ def decrypt_char(char, n, m):
 # data from file. Saves encrypted text to file
 def encrypt(n, m):
     encrypted_text = ''
-    with open(RAW_FILE_PATH, 'r') as input_file:
+    with open(RAW_FILE_PATH, 'r', encoding='utf-8') as input_file:
         input_text = input_file.read()
         for char in input_text:
             encrypted_text += encrypt_char(char, n, m)
     
-    with open(ENCRYPTED_FILE_PATH, 'w') as output_file:
+    with open(ENCRYPTED_FILE_PATH, 'w', encoding='utf-8') as output_file:
         output_file.write(encrypted_text)
 
 # takes n and m values as integers and decrypts the already
 # encrypted text from file. Returns decrypted text as string
 def decrypt(n, m):
-    with open(ENCRYPTED_FILE_PATH, 'r') as file:
+    with open(ENCRYPTED_FILE_PATH, 'r', encoding='utf-8') as file:
         encrypted_text = file.read()
         decrypted_text = ''
         for char in encrypted_text:
@@ -81,9 +92,8 @@ def decrypted_text_valid(decrypted_text):
     with open(RAW_FILE_PATH, 'r') as file:
         raw_text = file.read()
 
-    # print(raw_text)
-    # print()
-    # print(decrypted_text)
+    print('Raw text\n', raw_text, '\n')
+    print('Decrypted text\n', decrypted_text)
 
     return raw_text == decrypted_text
 

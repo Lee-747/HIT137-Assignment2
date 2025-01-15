@@ -1,0 +1,3 @@
+Warmest and Coolest Stations:
+Warmest Station(s): MARBLE-BAR (Avg Temp: 41.47916666666667)
+Coolest Station(s): CABRAMURRA-SMHEA-AWS (Avg Temp: 12.380833333333333)

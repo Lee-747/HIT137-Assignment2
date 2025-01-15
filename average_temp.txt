@@ -1,0 +1,13 @@
+Average Temperature for Each Month:
+January      32.725308
+February     32.115089
+March        30.419683
+April        27.570513
+May          23.970616
+June         21.031862
+July         20.364402
+August       21.805594
+September    24.906112
+October      27.576759
+November     29.817562
+December     31.470857
